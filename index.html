@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Formulir Pendaftaran Mahasiswa Baru 2025-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* Light Mode (default) */
+  body.light {
+    background: #f5f7fa;
+    color: #333;
+  }
+  .light .card {
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .light .card h2 { color: #1976d2; }
+  .light input[type=text], 
+  .light input[type=email], 
+  .light input[type=date], 
+  .light input[type=tel], 
+  .light textarea {
+    background: #f9f9f9;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+
+  /* Dark Mode */
+  body.dark {
+    background: #0d1b3d;
+    color: #fff;
+  }
+  .dark .card {
+    background: #1e1e2f;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .dark .card h2 { color: #4da3ff; }
+  .dark input[type=text], 
+  .dark input[type=email], 
+  .dark input[type=date], 
+  .dark input[type=tel], 
+  .dark textarea {
+    background: #2c2c3c;
+    color: #fff;
+    border: 1px solid #666;
+  }
+
+  /* Card umum */
+  .card {
+    padding: 20px;
+    margin: 15px auto;
+    border-radius: 12px;
+    max-width: 700px;
+  }
+  .card h2 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+  label { display: block; margin: 8px 0; }
+  input[type=text], input[type=email], input[type=date], input[type=tel], textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 6px;
+    font-size: 14px;
+  }
+  textarea { resize: vertical; min-height: 60px; }
+  input[type=file] { margin-top: 8px; }
+  input[type=radio], input[type=checkbox] { margin-right: 6px; }
+
+  /* Tombol */
+  .actions { text-align: center; margin-top: 20px; }
+  .btn {
+    border: none;
+    padding: 12px 20px;
+    margin: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .light .btn { background: #1976d2; color: #fff; }
+  .light .btn:hover { background: #0d47a1; }
+  .light .btn.reset { background: #9e9e9e; }
+
+  .dark .btn { background: #4da3ff; color: #fff; }
+  .dark .btn:hover { background: #0d6efd; }
+  .dark .btn.reset { background: #888; }
+
+  /* Tombol mode */
+  #modeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body class="light">
+
+<button id="modeToggle">🌙 Dark Mode</button>
+
+<div class="card">
+  <h2>FORMULIR PENDAFTARAN MAHASISWA BARU 2025-2026</h2>
+  <p>POLITEKNIK NEGERI UJUNG PANDANG - PROGRAM STUDI DI LUAR KAMPUS UTAMA (PSDKU) KOLAKA</p>
+</div>
+
+<form id="formPendaftaran" action="proses.php" method="post" enctype="multipart/form-data">
+
+  <div class="card">
+    <h2>PMB JALUR (pilih 1 jalur)</h2>
+    <label><input type="radio" name="jalur" required> Jalur Nilai Rapor</label>
+    <label><input type="radio" name="jalur"> Jalur Nilai UTBK</label>
+    <label><input type="radio" name="jalur"> Jalur Prestasi Non Akademik</label>
+    <label><input type="radio" name="jalur"> Jalur Tahfidz</label>
+    <label><input type="radio" name="jalur"> Jalur Ketua OSIS</label>
+    <label>Lainnya: <input type="text" name="jalur_lain"></label>
+  </div>
+
+  <div class="card">
+    <h2>Pilihan Program Studi (maks 3)</h2>
+    <label><input type="checkbox" name="prodi" value="Energi"> D3 Teknologi Teknik Energi</label>
+    <label><input type="checkbox" name="prodi" value="Alat Berat"> D3 Perawatan Alat Berat</label>
+    <label><input type="checkbox" name="prodi" value="Akuntansi"> D4 Akuntansi Manajerial</label>
+    <label><input type="checkbox" name="prodi" value="Multimedia"> D4 Teknologi Rekayasa Multimedia</label>
+    <label><input type="checkbox" name="prodi" value="Kimia"> D4 Teknologi Rekayasa Kimia Industri</label>
+  </div>
+
+  <div class="card"><h2>Data Pribadi</h2>
+    <label>Nama Lengkap *<input type="text" name="nama" required></label>
+    <label>Nomor Induk Siswa<input type="text" name="nis"></label>
+    <label>NIK *<input type="text" name="nik" required></label>
+    <label>Asal Sekolah *<input type="text" name="asal" required></label>
+    <label>Alamat Sekolah *<textarea name="alamat_sekolah" required></textarea></label>
+    <label>Tempat Lahir *<input type="text" name="tempat" required></label>
+    <label>Tanggal Lahir *<input type="date" name="tanggal" required></label>
+    <label>Jenis Kelamin *<br>
+      <input type="radio" name="jk" value="Laki-laki" required> Laki-laki
+      <input type="radio" name="jk" value="Perempuan"> Perempuan
+    </label>
+    <label>Alamat Lengkap *<textarea name="alamat" required></textarea></label>
+    <label>No. Telp/WA *<input type="tel" name="hp" required></label>
+    <label>Email *<input type="email" name="email" required></label>
+  </div>
+
+  <div class="card"><h2>Upload File Dokumen</h2>
+    <label>Prestasi Non Akademik (PDF, max 10 MB)<input type="file" name="nonakademik" accept="application/pdf"></label>
+    <label>Tahfidz (PDF, max 10 MB)<input type="file" name="tahfidz" accept="application/pdf"></label>
+    <label>Ketua OSIS (PDF, max 10 MB)<input type="file" name="osis" accept="application/pdf"></label>
+    <label>KTP / Identitas Lainnya (PDF/Image, max 10 MB)<input type="file" name="ktp" accept="application/pdf,image/*" required></label>
+    <label>Pas Foto 4x6 (PDF/Image, max 10 MB)<input type="file" name="foto" accept="application/pdf,image/*" required></label>
+  </div>
+
+  <div class="card">
+    <h2>Pernyataan *</h2>
+    <label>
+      <input type="checkbox" name="pernyataan" required>
+      Saya menyatakan dengan sesungguhnya bahwa isian data ini benar. Jika ternyata tidak benar/palsu, saya bersedia menerima sanksi sesuai ketentuan yang berlaku di Politeknik Negeri Ujung Pandang - PSDKU Kolaka.
+    </label>
+  </div>
+
+  <div class="actions">
+    <input type="submit" class="btn" value="Kirim">
+    <input type="reset" class="btn reset" value="Kosongkan Formulir">
+  </div>
+
+</form>
+
+<script>
+  // Toggle dark/light mode
+  const toggle = document.getElementById('modeToggle');
+  const body = document.body;
+  toggle.addEventListener('click', () => {
+    if (body.classList.contains('light')) {
+      body.classList.replace('light', 'dark');
+      toggle.textContent = "☀️ Light Mode";
+    } else {
+      body.classList.replace('dark', 'light');
+      toggle.textContent = "🌙 Dark Mode";
+    }
+  });
+
+  // Validasi maksimal 3 prodi
+  const prodiOptions = document.querySelectorAll('input[name="prodi"]');
+  prodiOptions.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll('input[name="prodi"]:checked');
+      if (checked.length > 3) {
+        alert("Maksimal hanya boleh memilih 3 program studi!");
+        cb.checked = false;
+      }
+    });
+  });
+
+  // Validasi file upload max 10 MB
+  document.getElementById('formPendaftaran').addEventListener('submit', (e) => {
+    const files = document.querySelectorAll('input[type=file]');
+    for (let fileInput of files) {
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        if (file.size > 10 * 1024 * 1024) {
+          alert("File " + fileInput.name + " melebihi 10 MB!");
+          e.preventDefault();
+          return false;
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
